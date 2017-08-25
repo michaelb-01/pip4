@@ -1,0 +1,29 @@
+<!-- <div  class="topnav"></div> -->
+
+<div id="wrapper">
+  <div id="topnav">
+    <div class="hamburger-menu" [ngClass]="{open: sidenav.opened}" (click)="sidenav.toggle()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul id="top-nav-list">
+      <li>
+        <a [routerLink]="['/jobs']">Jobs</a>
+      </li>
+    </ul>
+  </div>
+
+  <md-sidenav-container class="container">
+    <md-sidenav #sidenav class="sidenav">
+      Jolly good!
+    </md-sidenav>
+
+    <router-outlet></router-outlet>
+
+  </md-sidenav-container>
+</div>
+
+

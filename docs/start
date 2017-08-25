@@ -1,0 +1,17 @@
+// start mongo database
+cd /data/db
+mongod
+
+// from pipe4 folder
+// start meteor
+npm run api
+
+// start app
+npm start
+
+
+
+
+// for meteor desktop (from pipe4 root folder)
+// start meteor 
+npm run mobile

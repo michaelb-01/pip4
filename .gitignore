@@ -1,0 +1,7 @@
+# VIDEO FILES #
+*.mov
+*.mp4
+
+src/assets/video
+node_modules
+

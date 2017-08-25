@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "noImplicitAny": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "module": "commonjs",
+    "paths": {
+      "api/*": ["./api/server/*"]
+    },
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "types": [
+      "@types/underscore"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "api/node_modules",
+    "api",
+    "docs"
+  ]
+}

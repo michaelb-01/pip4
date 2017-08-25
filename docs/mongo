@@ -1,0 +1,16 @@
+I created a mongo database in the default location (/data/db) with 'use meteor'
+I insert a fake document which created the collection:
+
+db.jobs.insert({name:'test',client:'test client'})
+
+to connect to this external mongo database I created a package.json file inside the api folder (the meteor project)
+I added an npm script to run the following:
+
+MONGO_URL=mongodb://localhost:27017/meteor meteor
+
+reset mongo database
+meteor reset doesn't work on external databases so we have to use mongo's db.dropDatabase
+
+use:
+
+npm run api:reset

@@ -1,17 +1,14 @@
 @import "../../variables";
 
-.sidenav {
-  width: 250px;
-  .entities-form {
-    margin: 0 12%;
-  }
-  .form-title {
-    text-align: center;
-    margin-top: 15px;
-  }
-  .form-sub-title {
-    text-align: center;
-  }
+.entities-form {
+  margin: 0 12%;
+}
+.form-title {
+  text-align: center;
+  margin-top: 15px;
+}
+.form-sub-title {
+  text-align: center;
 }
 
 .entities-container {
@@ -99,18 +96,6 @@
   line-height: 20px;
   &:hover {
     background-color: $accent-light;
-  }
-  &.notStarted { 
-    border-left: 2px solid red;
-  }
-  &.active {
-    border-left: 2px solid orange;
-  }
-  &.pendingFeedback {
-    border-left: 2px solid blue;
-  }
-  &.complete {
-    border-left: 2px solid green;
   }
 }
 
@@ -255,18 +240,4 @@
   i {
     color: #595f67;
   }
-}
-
-@media only screen and (max-width: 767px) {
-    .entity {
-      width: 31.3333%;
-      padding-bottom: 17.625%;
-    }
-}
-
-@media only screen and (max-width: 319px) {
-    .entity {
-      width: 48%;
-      padding-bottom: 27%;
-    }
 }

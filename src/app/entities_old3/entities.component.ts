@@ -178,6 +178,10 @@ export class EntitiesComponent implements OnInit {
     
     return filteredUsers;
   }
+
+  displayFn(user: User): string {
+    return user ? user.profile.name : '';
+  }
   
   removeUser(user) {
     for (var i = 0; i < this.selectedUsers.length; i++) {

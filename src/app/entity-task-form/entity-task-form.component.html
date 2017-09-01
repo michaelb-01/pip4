@@ -1,0 +1,53 @@
+<div class="form-title bold">{{entityName}}</div>
+<div class="form-sub-title">{{formTitle}}</div>
+
+<form class="entities-form" (ngSubmit)="formSubmit(entitiesForm)" #entitiesForm="ngForm">
+  <div class="form-field">
+    <md-select placeholder="Task Name" class="fullWidth" [(ngModel)]="selectedTask" name="task" [disabled]="editing">
+      <md-option *ngFor="let task of filteredTasks" [value]="task">
+        {{ task }}
+      </md-option>
+    </md-select>
+  </div>
+
+  <md-input-container class="fullWidth">
+    <input #userQuery
+            mdInput 
+            placeholder="Assign Artist" 
+            [mdAutocomplete]="auto" 
+            [formControl]="userCtrl">
+  </md-input-container>
+
+  <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let user of filteredUsers | async" 
+      [value]="user" 
+      (onSelectionChange)="selectUser(user)">
+        {{ user.profile.name }}
+    </md-option>
+  </md-autocomplete>
+
+  <ul class="user-list">
+    <li class="user-chip" *ngFor="let user of selectedUsers">
+      {{ user.profile.name }}
+      <i class="material-icons user-chip-close" (click)=removeUser(user)>close</i>
+    </li>
+  </ul>   
+
+  <div class="form-field">
+    <md-input-container>
+      <input mdInput [mdDatepicker]="picker" placeholder="Due Date" [(formControl)]="dateCtrl">
+      <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    </md-input-container>
+    <md-datepicker #picker></md-datepicker>
+  </div>
+
+  <div class="form-field">
+    <md-select placeholder="Status" class="fullWidth" [(ngModel)]='currentStatus' name="status">
+      <md-option *ngFor="let status of statuses" [value]="status.value">
+        {{ status.viewValue }}
+      </md-option>
+    </md-select>
+  </div>
+
+  <button md-button type="submit">{{formTitle}}</button>
+</form>

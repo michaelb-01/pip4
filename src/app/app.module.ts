@@ -9,17 +9,26 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { MdInputModule, MdAutocompleteModule, MdDialogModule, MdButtonModule, MdToolbarModule, MdGridListModule, MdSidenavModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { MdSelectModule, 
+         MdInputModule, 
+         MdAutocompleteModule, 
+         MdDialogModule, 
+         MdButtonModule, 
+         MdToolbarModule, 
+         MdSidenavModule, 
+         MdTooltipModule,
+         MdDatepickerModule, 
+         MdNativeDateModule } from '@angular/material';
 
 import 'hammerjs';
-import { DatepickerComponent } from './datepicker/datepicker.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+
 import { JobsComponent } from './jobs/jobs.component';
 import { JobComponent } from './job/job.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import { EntitiesComponent } from './entities/entities.component';
 
 import { FirstLetterPipe } from './pipes/first-letter.pipe';
+import { EntityTaskFormComponent } from './entity-task-form/entity-task-form.component';
 
 const appRoutes: Routes = [
   { path: 'job/:jobId', component: JobComponent },
@@ -33,13 +42,12 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DatepickerComponent,
-    SidenavComponent,
     JobsComponent,
     JobComponent,
     ThumbnailComponent,
     EntitiesComponent,
-    FirstLetterPipe
+    FirstLetterPipe,
+    EntityTaskFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,12 +56,13 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MdAutocompleteModule,
     MdInputModule,
+    MdSelectModule,
     MdButtonModule,
     MdDatepickerModule,
     MdDialogModule,
     MdNativeDateModule,
+    MdTooltipModule,
     MdSidenavModule,
-    MdGridListModule,
     MdToolbarModule,
     RouterModule.forRoot(
       appRoutes

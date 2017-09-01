@@ -36,6 +36,8 @@ function createEntity(jobId, jobName) {
   var taskTypes = ['fx','model','light','comp','texture','track'];
   var tasks = [];
 
+  var statusTypes = ['active', 'notStarted', 'pendingFeedback', 'complete'];
+
   for (var i=0;i<Math.floor(Math.random() * taskTypes.length);i++) {
     var taskUsers = [];
     for (var j=0;j<Math.floor(users.length);j++) {
@@ -44,18 +46,19 @@ function createEntity(jobId, jobName) {
       }
     }
     tasks.push({
-      "_id":new Mongo.ObjectID(),
-      "type":taskTypes[i],
-      "users":taskUsers,
-      "done":false
+      "_id": new Mongo.ObjectID(),
+      "type": taskTypes[i],
+      "users": taskUsers,
+      "dueDate": new Date(),
+      'status': statusTypes[Math.floor((Math.random() * statusTypes.length))]
     });
   }
-
-  var statusTypes = ['active', 'notStarted', 'completed'];
 
   var entityId = new Mongo.ObjectID();
 
   var name = Fake.sentence(1);
+
+  let thumb = thumbs[Math.floor((Math.random() * thumbs.length))];
 
   var entity = {
     '_id': entityId,
@@ -68,7 +71,8 @@ function createEntity(jobId, jobName) {
     'tasks': tasks,
     'status': statusTypes[Math.floor((Math.random() * statusTypes.length))],
     'todos':[],
-    'thumbUrl': '../assets/img/' + thumbs[Math.floor((Math.random() * thumbs.length))] + '_sprites.jpg',
+    'thumbUrl': '../assets/img/' + thumb + '_sprites.jpg',
+    'media': '../assets/video/' + thumb + '.mov',
     'description': Fake.sentence(7),
     'public': true
   }

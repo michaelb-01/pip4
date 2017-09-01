@@ -1,12 +1,44 @@
 <md-sidenav-container class="sidenav-container">
   <md-sidenav #sidenav align="end" class="sidenav">
-    <app-entity-task-form #taskForm></app-entity-task-form>
+    <p class="form-title">{{formTitle}}</p>
+    <form class="entities-form" (ngSubmit)="formSubmit(taskName.value)" #entitiesForm="ngForm">
+      <md-input-container>
+        <input #taskName mdInput placeholder="Task Name" value="">
+      </md-input-container>
+
+      <div class="user-search-container">
+        <md-input-container>
+          <input 
+            mdInput 
+            #userSeach
+            placeholder="Assign Artist"  
+            [(ngModel)]='userQuery'
+            (ngModelChange)=filterUsers() 
+            name='searchQuery'>
+        </md-input-container>
+
+        <ul #userSeachResults class="user-search-list" [hidden]="!userFocus">
+          <li (click)=selectUser(user) class="user-result" *ngFor="let user of filteredUsers">
+            {{ user }}
+          </li>
+        </ul>   
+      </div>
+
+      <ul class="user-list">
+        <li class="user-chip" *ngFor="let user of selectedUsers">
+          {{ user }}
+          <i class="material-icons user-chip-close" (click)=removeUser(user)>close</i>
+        </li>
+      </ul>   
+
+      <button md-button type="submit">Click me!</button>
+    </form>
   </md-sidenav>
 
   <div class="assignView" (click)="showAssign = !showAssign">
     <div class="assignViewIcon" [ngClass]="{showAssign: showAssign}">
-      <i class="material-icons" mdTooltip='Task Assignment' [mdTooltipPosition]="'after'">people</i>
-      <i class="material-icons" mdTooltip='Cover View' [mdTooltipPosition]="'after'">dashboard</i>
+      <i class="material-icons">people</i>
+      <i class="material-icons">dashboard</i>
     </div>
   </div>
 
@@ -27,16 +59,16 @@
           </div>
           <!-- ENTITY DETAILS -->
           <div class="entity-details {{entity.status}}">
-            <i class="material-icons task-add-button" (click)="taskForm.addTask(entity); sidenav.open()">add_circle_outline</i>
+            <i class="material-icons task-add-button" (click)="sidenav.open()">add_circle_outline</i>
             <div class="details-title bold">{{entity.name}}</div>
             <ul class="task-list">
               <li *ngFor="let task of entity.tasks; let taskId = index;" 
-                 (click)="taskForm.editTask(entity, task); sidenav.open()"
-                 class="task-item {{task.status}}"
+                 (click)="selectTask(task)" 
+                 class="task-item"
                  [ngClass]="{selected: task.selected}">
                 <span class="type">{{task.type}} </span>
                 <div class="chips chips-small">
-                  <div *ngFor="let taskUser of task.users" class="chip" mdTooltip={{taskUser}}>
+                  <div *ngFor="let taskUser of task.users" class="chip">
                     {{taskUser | firstLetter}}
                   </div>
                 </div>

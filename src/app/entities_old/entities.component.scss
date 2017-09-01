@@ -3,13 +3,9 @@
 .sidenav {
   width: 250px;
   .entities-form {
-    margin: 0 12%;
+    margin: 0 10%;
   }
   .form-title {
-    text-align: center;
-    margin-top: 15px;
-  }
-  .form-sub-title {
     text-align: center;
   }
 }
@@ -48,10 +44,7 @@
   &.active {
     border-top: 2px solid orange;
   }
-  &.pendingFeedback {
-    border-top: 2px solid blue;
-  }
-  &.complete {
+  &.completed {
     border-top: 2px solid green;
   }
 }
@@ -72,7 +65,6 @@
   .entity-cover {
     top: 0;
     background-color: black;
-    overflow: hidden;
   }
   .entity-details {
     top: 100%;
@@ -100,45 +92,6 @@
   &:hover {
     background-color: $accent-light;
   }
-  &.notStarted { 
-    border-left: 2px solid red;
-  }
-  &.active {
-    border-left: 2px solid orange;
-  }
-  &.pendingFeedback {
-    border-left: 2px solid blue;
-  }
-  &.complete {
-    border-left: 2px solid green;
-  }
-}
-
-.form-field {
-  margin: 15px 0;
-}
-
-.fullWidth {
-  width: 100%;
-}
-
-/deep/ .mat-select-trigger {
-  font-size: 11.5px !important;
-}
-
-/deep/ .mat-option {
-  line-height: 36px;
-  height: 36px;
-  font-size: 12px;
-}
-
-/deep/ .mat-select-panel {
-  max-height: 400px !important;
-  margin-top: 40px !important;
-}
-
-/deep/ .cdk-overlay-panel {
-
 }
 
 .chips {
@@ -157,9 +110,8 @@
 
 .user-chip {
   background-color: #d6d6d6;
-  display: table;
+  display: inline-block;
   padding: 4px 7px;
-  margin: 5px 0;
   border-radius: 10px;
   i {
     vertical-align: bottom;
@@ -169,11 +121,6 @@
       color: $accent;
     }
   }
-}
-
-.user-result{
-  background-color: white;
-  padding: 5px;
 }
 
 .task-add-button {
@@ -255,18 +202,4 @@
   i {
     color: #595f67;
   }
-}
-
-@media only screen and (max-width: 767px) {
-    .entity {
-      width: 31.3333%;
-      padding-bottom: 17.625%;
-    }
-}
-
-@media only screen and (max-width: 319px) {
-    .entity {
-      width: 48%;
-      padding-bottom: 27%;
-    }
 }
